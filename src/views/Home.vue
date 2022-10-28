@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+
+    <p>mon point - {{ points }}</p>
+
     <div v-for="blog in blogs" :key="blog.id">
       <div class="blog">
         <h3>{{ blog.title }}</h3>
@@ -25,6 +28,11 @@ export default {
     ])
     return { 
       blogs
+    }
+  },
+  computed: {
+    points(){
+      return this.$store.state.points
     }
   }
 }

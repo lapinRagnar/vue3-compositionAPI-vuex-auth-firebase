@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <Navbar />
-    Bonjour
     <router-view/>
   </div>
 </template>

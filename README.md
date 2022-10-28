@@ -27,3 +27,15 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+### ressource
+
+## site du tuto
+https://www.youtube.com/watch?v=M955GrNXPG0&list=PL4cUxeGkcC9jveNu1TI0P62Dn9Me1j9tG
+
+Access the course files on GitHub:
+https://github.com/iamshaunjp/Vuex-4-Firebase-Auth
+
+ Starter Project:
+ 

@@ -6,7 +6,7 @@ const store = createStore({
   },
 
   mutations: {
-    updatepoints(state, payload) {
+    updatePoints(state, payload) {
       state.points = state.points + payload
     }
   }

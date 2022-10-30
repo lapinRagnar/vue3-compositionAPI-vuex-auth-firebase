@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <p>mon point - {{ points }}</p>
+    <p>mon point : {{ points }}</p>
     <button @click="updatePoints(1)">add points</button>
     <button @click="updatePoints(-1)" >remove points</button>
 
@@ -20,7 +20,9 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import{ useStore } from 'vuex'
+
 export default {
   setup() {
     const blogs = ref([
@@ -28,21 +30,19 @@ export default {
       { title: '...Then I Took an Arrow in the Knee', id: 2 },
       { title: 'Mario vs Luigi, Ultimate Showdown', id: 3 },
     ])
-    return { 
-      blogs
+
+    const store = useStore()
+    
+    const points = computed(() => store.state.points)
+
+    const updatePoints = (p) => {
+      store.commit('updatePoints', p)
     }
-  },
-  computed: {
-    points(){                           // le points ici c'est 
-      return this.$store.state.points
+
+    return { 
+      blogs, points, updatePoints
     }
   },
   
-  methods: {
-    // on peut utiliser d'autre nom que le nom de la fonction dans la mutations: {}
-    updatePoints(points) {                    // le points ici c'est le nom de la fonction points() dans computed():{} mais on enleve le ()
-      this.$store.commit('updatepoints', points)      // 'updatepoints', ici c'est le nom dans la mutations: {} - obligatoire
-    }
-  }
 }
 </script>

@@ -32,7 +32,6 @@ export default {
     
     console.log('dans le home - valeur initial de user', store.state.user)
 
-    store.commit('setUser', 'lapinragnar')
 
     return { 
       blogs, 

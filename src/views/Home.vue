@@ -2,6 +2,8 @@
   <div class="home">
 
     <p>mon point - {{ points }}</p>
+    <button @click="updatePoints(1)">add points</button>
+    <button @click="updatePoints(-1)" >remove points</button>
 
     <div v-for="blog in blogs" :key="blog.id">
       <div class="blog">
@@ -31,8 +33,15 @@ export default {
     }
   },
   computed: {
-    points(){
+    points(){                           // le points ici c'est 
       return this.$store.state.points
+    }
+  },
+  
+  methods: {
+    // on peut utiliser d'autre nom que le nom de la fonction dans la mutations: {}
+    updatePoints(points) {                    // le points ici c'est le nom de la fonction points() dans computed():{} mais on enleve le ()
+      this.$store.commit('updatepoints', points)      // 'updatepoints', ici c'est le nom dans la mutations: {} - obligatoire
     }
   }
 }

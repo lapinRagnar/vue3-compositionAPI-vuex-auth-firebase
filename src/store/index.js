@@ -4,6 +4,7 @@ import { auth } from '@/firebase/config'
 import {
   createUserWithEmailAndPassword , 
   signInWithEmailAndPassword,
+  signOut,
 
 } from 'firebase/auth'
 
@@ -15,7 +16,7 @@ const store = createStore({
   mutations: {
     setUser(state, payload) {
       state.user = payload
-      console.log('le state user est modifié ici',state.user)
+      console.log('le state user est modifié ici dans la mutations', state, state.user)
     }
   },
 
@@ -50,7 +51,16 @@ const store = createStore({
         throw new Error('could not complete login ')
       }
 
+    },
+
+    async logout(context) {
+      console.log('------------------logout() action -------------------')
+
+      const res = await signOut(auth)
+      context.commit('setUser', null)
+      console.log('dans logout', res )
     }
+
   }
 
 })
